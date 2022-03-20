@@ -1,27 +1,15 @@
-# BlaasveldNet
+#Blaasveld-net
+The monorepository for the Blaasveld.net project.  
+Built with Angular Universal and Express.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+## Run locally
+Use `npm run dev:ssr` to start a local dev server on http://localhost:4200.
 
-## Development server
+## Tests & code style
+Use `npm t` to run the Angular tests for the client.  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Use `npm run cy:run` to run the Cypress E2E tests for the client. *Make sure the client is running on port `4200`.*
 
-## Code scaffolding
+Use `npm run jest` to run the Jest tests for the server.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The project is set up with Eslint which can be enabled in the IDE or run with `npm run lint`.
