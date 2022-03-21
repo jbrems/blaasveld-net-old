@@ -6,5 +6,6 @@ describe('Home page', () => {
 
   it('should render the admin page', () => {
     cy.get('p[data-e2e="content"]').should('have.text', 'home works!');
+    cy.get('svg[data-e2e="hexagon"]').should('exist');
   });
 });
