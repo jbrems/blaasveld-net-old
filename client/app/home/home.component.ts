@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Hexagon } from '../../../shared/hexagon/hexagon';
 import * as hexagonService from '../../../shared/hexagon/hexagon.service';
 
 @Component({
@@ -8,18 +9,28 @@ import * as hexagonService from '../../../shared/hexagon/hexagon.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public hexCoords: [number, number][] = [];
-  public neighbors: [number, number][] = [];
-  public additionalHexagons: [number, number][][] = [];
+  public hexagons: Hexagon[] = [];
+  public neighbors: Hexagon[] = [];
+
+  public borderCoords: [number, number][] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.hexCoords = hexagonService.generateHexCoords([384,384], 128);
-    this.neighbors = hexagonService.getNeighbors([384,384], 128);
+    const startHexagon = new Hexagon([350,350], 128);
+    this.hexagons.push(startHexagon);
+    this.neighbors = startHexagon.calculateNeighbors();
+
+    const borderEdges = hexagonService.calculateBorderEdges(this.hexagons);
+    const borderVertices = hexagonService.convertEdgesToOrderedVerticesArray(borderEdges);
+    this.borderCoords = borderVertices.map(bv => bv.asArray);
   }
 
-  public addHexagon (center: [number, number]) {
-    this.additionalHexagons.push(hexagonService.generateHexCoords(center, 128));
+  public addHexagon (hexagon: Hexagon) {
+    this.hexagons.push(hexagon);
+
+    const borderEdges = hexagonService.calculateBorderEdges(this.hexagons);
+    const borderVertices = hexagonService.convertEdgesToOrderedVerticesArray(borderEdges);
+    this.borderCoords = borderVertices.map(bv => bv.asArray);
   }
 }

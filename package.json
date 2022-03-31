@@ -29,6 +29,7 @@
     "@angular/router": "~13.3.0",
     "@nguniversal/express-engine": "^13.0.2",
     "express": "^4.17.3",
+    "mapbox-gl": "^2.7.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

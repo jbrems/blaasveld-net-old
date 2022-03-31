@@ -1,0 +1,25 @@
+#map {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 50px);
+
+ #center-overlay {
+   position: absolute;
+   top: calc(50% - 100px);
+   left: calc(50% - 100px);
+   z-index: 5000;
+   width: 200px;
+   height: 200px;
+
+   svg {
+     width: 200px;
+     height: 200px;
+
+     polygon {
+       stroke: white;
+       stroke-width: 3px;
+       fill: transparent;
+     }
+   }
+ }
+}

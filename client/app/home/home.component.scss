@@ -1,12 +1,35 @@
-svg {
+svg#hexagons {
+  width: 50vw;
+  height: 50vw;
+
+  background-color: lightgrey;
+
   circle {
     cursor: pointer;
     stroke: black;
     fill: transparent;
   }
 
-  polygon.additional-hexagon {
+  polygon {
     stroke: black;
     fill: mediumaquamarine;
+
+    &:first-of-type {
+      fill: gold;
+    }
+  }
+}
+
+svg#border {
+  width: 45vw;
+  height: 50vw;
+
+  margin-left: 15px;
+
+  background-color: aliceblue;
+
+  polygon {
+    stroke: black;
+    fill: transparent;
   }
 }

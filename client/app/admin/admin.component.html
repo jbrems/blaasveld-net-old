@@ -1,1 +1,11 @@
 <p data-e2e="content">admin works!</p>
+<p>{{center}}</p>
+
+<div id="map">
+  <div id="center-overlay">
+    <svg>
+      <polygon [attr.points]="centerOverlay.verticesAsArray" />
+    </svg>
+  </div>
+</div>
+

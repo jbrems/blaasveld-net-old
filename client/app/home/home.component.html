@@ -1,6 +1,10 @@
 <p data-e2e="content">home works!</p>
-<svg height="1024" width="1024" data-e2e="hexagon">
-  <polygon [attr.points]="hexCoords" stroke="black" fill="gold" />
-  <circle *ngFor="let neighbor of neighbors" [attr.cx]="neighbor[0]" [attr.cy]="neighbor[1]" r="10" (click)="addHexagon(neighbor)" />
-  <polygon class="additional-hexagon" [attr.points]="hexCoords" *ngFor="let hexCoords of additionalHexagons" />
+<svg id="hexagons" data-e2e="hexagon">
+  <circle *ngFor="let neighbor of neighbors" [attr.cx]="neighbor.center.x" [attr.cy]="neighbor.center.y" r="10" (click)="addHexagon(neighbor)" />
+  <polygon [attr.points]="hexagon.verticesAsArray" *ngFor="let hexagon of hexagons"/>
+</svg>
+
+<svg id="border">
+  <polygon [attr.points]="borderCoords" />
+<!--  <circle *ngFor="let point of borderCoords" [attr.cx]="point[0]" [attr.cy]="point[1]" r="3" />-->
 </svg>
