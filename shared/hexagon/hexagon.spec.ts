@@ -1,6 +1,9 @@
 import { Hexagon } from './hexagon';
 import { Vertex } from './vertex';
 import { Edge } from './edge';
+import * as hexagonMatchers from './hexagon.matcher';
+
+expect.extend(hexagonMatchers);
 
 describe('Hexagon', () => {
   describe('Constructor', () => {
@@ -16,27 +19,12 @@ describe('Hexagon', () => {
       expect(hexagon.center).toEqual(new Vertex(25.154, 13.7));
     });
 
-    // TODO: use custom matcher with toFixed
     it('calculates the vertices', () => {
       const hexagon = new Hexagon([0, 0], 1);
-      expect(hexagon.vertices).toEqual([
-        new Vertex(1, 0),
-        new Vertex(0.5000000000000001, 0.8660254037844386),
-        new Vertex(-0.4999999999999998, 0.8660254037844387),
-        new Vertex(-1, 1.2246467991473532e-16),
-        new Vertex(-0.5000000000000004, -0.8660254037844385),
-        new Vertex(0.49999999999999933, -0.866025403784439),
-      ]);
+      expect(hexagon.vertices).toEqualVertices([[1, 0], [0.5, 0.866025], [-0.5, 0.866025], [-1, 0], [-0.5, -0.866025], [0.5, -0.866025]]);
 
       const hexagon2 = new Hexagon([64, 64], 128);
-      expect(hexagon2.vertices).toEqual([
-        new Vertex(192, 64),
-        new Vertex(128, 174.85125168440814),
-        new Vertex(2.842170943040401e-14, 174.85125168440817),
-        new Vertex(-64, 64.00000000000001),
-        new Vertex(-5.684341886080802e-14, -46.851251684408126),
-        new Vertex(127.99999999999991, -46.8512516844082),
-      ]);
+      expect(hexagon2.vertices).toEqualVertices([[192, 64], [128, 174.851252], [0, 174.851252], [-64, 64], [-0.0000001, -46.851252], [128, -46.851252]]);
     });
 
     // TODO: use custom matcher with toFixed
