@@ -16,4 +16,8 @@ export class Edge {
     return (this.start.equals(edge.start) && this.end.equals(edge.end))
       || (this.start.equals(edge.end) && this.end.equals(edge.start));
   }
+
+  public toString () {
+    return `Edge[[${this.start.x.toFixed(6)}, ${this.start.y.toFixed(6)}], [${this.end.x.toFixed(6)}, ${this.end.y.toFixed(6)}]]`;
+  }
 }

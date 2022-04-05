@@ -14,4 +14,8 @@ export class Vertex {
   public equals (vertex: Vertex): boolean {
     return this.x.toFixed(6) === vertex.x.toFixed(6) && this.y.toFixed(6) === vertex.y.toFixed(6);
   }
+
+  public toString (): string {
+    return `Vertex[${this.x.toFixed(6)}, ${this.y.toFixed(6)}]`;
+  }
 }
