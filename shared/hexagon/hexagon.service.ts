@@ -20,7 +20,7 @@ export function calculateBorderEdges (hexagons: Hexagon[]): Edge[] {
     const distinctEdges = hexagon.edges.filter((e) => {
       return !neighboringHexagons.some(nh => nh.edges.some(nhe => nhe.equals(e)));
     });
-
+    console.log(`Hex ${i} - adding ${distinctEdges.length} edges from ${hexagon.edges.length} with ${neighboringHexagons.length} neighbors`);
     borderEdges.push(...distinctEdges);
   }
 

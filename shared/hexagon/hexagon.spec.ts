@@ -106,4 +106,10 @@ describe('Hexagon', () => {
       expect(hexagon2.equals(hexagon3)).toBe(false);
     });
   });
+
+  describe('To string', () => {
+    it('Formats the Hexagon as a string representation', () => {
+      expect(new Hexagon([2.5, 0.8660254], 128).toString()).toBe('Hexagon(Vertex(2.500000, 0.866025), 128)');
+    });
+  });
 });

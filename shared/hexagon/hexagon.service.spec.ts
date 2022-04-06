@@ -36,10 +36,9 @@ describe('Hexagon service', () => {
         new Edge([-1, 0], [-0.5, -0.866025]),
         new Edge([-0.5, -0.8660254], [0.5, -0.866025]),
         new Edge([0.5, -0.866025], [1, 0]),
-        new Edge([2.5, 0.8660254], [2, 1.732051]),
+        new Edge([2.5, 0.866025], [2, 1.732051]),
         new Edge([2, 1.732051], [1, 1.732051]),
         new Edge([1, 1.732051], [0.5, 0.866025]),
-        new Edge([0.5, 0.866025], [1, 0]),
         new Edge([1, 0], [2, -0.0000001]),
         new Edge([2, -0.0000001], [2.5, 0.866025]),
       ]);
@@ -55,15 +54,23 @@ describe('Hexagon service', () => {
         new Edge([0.5, -0.866025], [1, 0]),
         new Edge([2.5, 0.8660254], [2, 1.732051]),
         new Edge([2, 1.732051], [1, 1.732051]),
-        new Edge([0.5, 0.866025], [1, 0]),
         new Edge([1, 0], [2, -0.0000001]),
         new Edge([2, -0.0000001], [2.5, 0.866025]),
         new Edge([1, 1.732051], [0.5, 2.598076]),
         new Edge([0.5, 2.598076], [-0.5, 2.598076]),
         new Edge([-0.5, 2.598076], [-1, 1.732051]),
         new Edge([-1, 1.732051], [-0.5, 0.866025]),
-        new Edge([-0.5, 0.866025], [0.5, 0.866025]),
       ]);
+    });
+
+    it('calculates the border for multiple neighboring hexagons', () => {
+      let hexagon = new Hexagon([5, 5], 1);
+      expect(service.calculateBorderEdges([hexagon, ...hexagon.calculateNeighbors()]).length).toBe(18);
+    });
+
+    it('handles 0 / -0 approximation inequality', () => {
+      let hexagon = new Hexagon([0, 0], 1);
+      expect(service.calculateBorderEdges([hexagon, ...hexagon.calculateNeighbors()]).length).toBe(18);
     });
   });
 

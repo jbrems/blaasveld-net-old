@@ -14,7 +14,7 @@
     "lint": "eslint",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "jest": "jest"
+    "jest": "jest --coverage"
   },
   "private": true,
   "dependencies": {

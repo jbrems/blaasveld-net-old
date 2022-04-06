@@ -61,5 +61,24 @@ describe('Vertex', () => {
       expect(vertex1.equals(vertex1)).toBe(true);
       expect(vertex2.equals(vertex2)).toBe(true);
     });
+
+    it('considers approximations of -0 and 0 to be equal', () => {
+      const vertex1 = new Vertex(0.0000002, -.0000003);
+      const vertex2 = new Vertex(-0.0000004, 0.0000004);
+      expect(vertex1.equals(vertex2)).toBe(true);
+      expect(vertex2.equals(vertex1)).toBe(true);
+      expect(vertex1.equals(vertex1)).toBe(true);
+      expect(vertex2.equals(vertex2)).toBe(true);
+    });
+  });
+
+  describe('To string', () => {
+    it('Formats the Vertex as a string representation', () => {
+      expect(new Vertex(2.5, 0.8660254).toString()).toBe('Vertex(2.500000, 0.866025)');
+    });
+
+    it('Prints the coordinates with 6 decimal numbers', () => {
+      expect(new Vertex(-1, 1).toString()).toBe('Vertex(-1.000000, 1.000000)');
+    });
   });
 });

@@ -18,6 +18,6 @@ export class Edge {
   }
 
   public toString () {
-    return `Edge[[${this.start.x.toFixed(6)}, ${this.start.y.toFixed(6)}], [${this.end.x.toFixed(6)}, ${this.end.y.toFixed(6)}]]`;
+    return `Edge(${this.start}, ${this.end})`;
   }
 }

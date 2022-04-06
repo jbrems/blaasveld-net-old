@@ -71,4 +71,8 @@ export class Hexagon {
   public equals (hexagon: Hexagon): boolean {
     return this.center.equals(hexagon.center) && this.radius === hexagon.radius;
   }
+
+  public toString (): string {
+    return `Hexagon(${this.center}, ${this.radius})`;
+  }
 }
