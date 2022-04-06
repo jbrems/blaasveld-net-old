@@ -39,8 +39,12 @@ export function convertEdgesToOrderedVerticesArray (edges: Edge[]): Vertex[] {
   while (edges.length > 1) {
     const nextEdge = edges.find(e => e.start.equals(currentVertex) || e.end.equals(currentVertex)) as Edge;
     vertices.push(currentVertex);
-    if (nextEdge.start.equals(currentVertex)) currentVertex = nextEdge.end;
-    else currentVertex = nextEdge.start;
+
+    // Apparently the edges will always be ordered and should never be inverted, I don't yet believe this though
+    // if (nextEdge.start.equals(currentVertex)) currentVertex = nextEdge.end;
+    // else currentVertex = nextEdge.start;
+    currentVertex = nextEdge.end;
+
     edges = edges.filter(e => !e.equals(nextEdge as Edge));
   }
   vertices.push(currentVertex);
